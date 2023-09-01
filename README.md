@@ -1,2 +1,2 @@
 # Our Project Repo
-github demo firstcode
+BITS BIDS Project
