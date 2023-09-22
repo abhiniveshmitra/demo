@@ -1,0 +1,45 @@
+public class Buyer {private String username;
+   /*
+   private String email;
+    private String password;
+    private int bitscoinBalance;
+    private List<Bid> bids; // List of bids made by the buyer
+    private List<Message> messages; // Private messages for the buyer
+    // Other buyer-specific properties and methods...
+
+    // Getters and setters..
+    public void placeBid(Product product, int bidAmount) {
+        // Implementation for placing a bid
+    }
+
+    public List<Bid> viewBiddingHistory() {
+        // Implementation for viewing bidding history
+        return bids;
+    }
+
+    public List<Message> viewMessages() {
+        // Implementation for viewing messages
+        return messages;
+    }
+
+    public void increaseBalance(int amount) {
+        // Implementation for increasing the balance
+        bitscoinBalance += amount;
+    }
+}
+// Maintain a list of conversations with sellers
+    private List<Message> sellerConversations = new ArrayList<>();
+
+    // Constructors, getters, and setters...
+
+    public void addMessageToSellerConversation(Message message) {
+        // Add a message to the conversation with a specific seller
+        sellerConversations.add(message);
+    }
+
+    public List<Message> getSellerConversations() {
+        // Get the list of conversations with sellers
+        return sellerConversations;
+    }
+    */
+}
