@@ -1,0 +1,54 @@
+public class Seller {
+    /*
+    private String username;
+    private String email;
+    private String password;
+    private int bitscoinBalance;
+    private List<Product> productsForSale; // List of products the seller is selling
+    private List<Message> messages; // Private messages for the seller
+    // Other seller-specific properties and methods...
+
+    // Getters and setters...
+     public void listProduct(Product product) {
+        // Implementation for listing a product for sale
+        productsForSale.add(product);
+    }
+
+    public List<Product> viewProductsForSale() {
+        // Implementation for viewing products for sale
+        return productsForSale;
+    }
+
+    public List<Message> viewMessages() {
+        // Implementation for viewing messages
+        return messages;
+    }
+
+    public void withdrawBalance(int amount) {
+        // Implementation for withdrawing balance
+        bitscoinBalance -= amount;
+    }
+
+    public void markProductAsSold(Product product) {
+        // Implementation for marking a product as sold
+        productsForSale.remove(product);
+    }
+
+    public void updateProduct(Product product) {
+        // Implementation for updating product details
+        // Maintain a list of conversations with buyers
+    private List<Message> buyerConversations = new ArrayList<>();
+
+    // Constructors, getters, and setters...
+
+    public void addMessageToBuyerConversation(Message message) {
+        // Add a message to the conversation with a specific buyer
+        buyerConversations.add(message);
+    }
+
+    public List<Message> getBuyerConversations() {
+        // Get the list of conversations with buyers
+        return buyerConversations;
+    }
+     */
+}
