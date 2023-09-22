@@ -1,0 +1,30 @@
+Main Class:
+
+Responsibility: Entry point of the application, initializes the web server, and defines routes.
+Methods: Defines routes for different parts of the application (e.g., home page, user profile, product listing, messaging).
+Additional Functionality: Handles exceptions, serves static resources, and defines a not found route.
+Controller Class:
+
+Responsibility: Handles HTTP requests, processes user actions, and coordinates interactions between the client and server.
+Methods: Contains methods to handle various routes and actions (e.g., user registration, login, profile management, product listing, bidding, messaging).
+OAuth Handling: Includes a method to handle Google OAuth callbacks for user registration.
+User Class (Model):
+
+Responsibility: Represents user data and attributes.
+Attributes: Contains attributes such as user ID, nickname, balance, and roles (buyer/seller).
+Methods: May include methods for updating user information.
+Product Class (Model):
+
+Responsibility: Represents product data and attributes.
+Attributes: Contains attributes such as product ID, seller ID, product name, description, asking price, expiry time, and bid-related information.
+Methods: May include methods for managing product listings.
+Bid Class (Model):
+
+Responsibility: Represents bid data and attributes.
+Attributes: Contains attributes such as bid ID, buyer ID, product ID, bid amount, and timestamp.
+Methods: May include methods for bid validation and processing.
+Message Class (Model):
+
+Responsibility: Represents message data and attributes for user-to-user communication.
+Attributes: Contains attributes such as message ID, sender ID, receiver ID, message content, and timestamp.
+Methods: May include methods for sending and receiving messages.
