@@ -1,0 +1,31 @@
+public class Products {
+    /*
+    import java.util.Date;
+
+public class Product {
+    private String name; // The name or title of the product
+    private String description; // A description of the product
+    private double askingPrice; // The initial asking price set by the seller
+    private Seller seller; // A reference to the seller who listed the product
+    private List<Bid> bids; // A list of bids made on the product
+    private boolean isSold; // A flag indicating whether the product has been sold
+    private Date listingStartDate; // The date and time when the product was listed
+    private Date bidEndDate; // The date and time when the bid ends
+    private String videoUrl; // URL or file path of the uploaded video
+
+    // Constructors and other methods...
+
+    // Getter and setter methods for the description...
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // Other methods...
+}
+
+     */
+}
