@@ -1,0 +1,46 @@
+public class Database {
+    /*
+
+Sellers Table:
+
+Columns/Attributes:
+sellerID (Primary Key): A unique identifier for each seller.
+nickname: The seller's chosen nickname.
+balance: The seller's account balance (BITScoin balance).
+products: A list of products listed by the seller.
+Each product should have attributes such as productName, description, askingPrice, expiryTime, and a unique product ID.
+Buyers Table:
+
+Columns/Attributes:
+buyerID (Primary Key): A unique identifier for each buyer.
+nickname: The buyer's chosen nickname.
+balance: The buyer's account balance (BITScoin balance).
+Products Table:
+
+Columns/Attributes:
+productID (Primary Key): A unique identifier for each product.
+sellerID: The ID of the seller who listed the product.
+productName: The name of the product.
+description: A description of the product.
+askingPrice: The price set by the seller.
+expiryTime: The date and time when the product listing expires.
+You may include additional product-specific attributes as needed.
+Bids Table:
+
+Columns/Attributes:
+bidID (Primary Key): A unique identifier for each bid.
+buyerID: The ID of the buyer who placed the bid.
+productID: The ID of the product the bid is placed on.
+bidAmount: The amount of the bid.
+timestamp: The date and time when the bid was placed.
+You may include additional bid-specific attributes as needed.
+Messages Table:
+
+Columns/Attributes:
+messageID (Primary Key): A unique identifier for each message.
+senderID: The ID of the user (either buyer or seller) who sent the message.
+receiverID: The ID of the user (either buyer or seller) who received the message.
+content: The content of the message.
+timestamp: The date and time when the message was sent.
+     */
+}
