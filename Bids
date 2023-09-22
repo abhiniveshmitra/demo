@@ -1,0 +1,43 @@
+public class Bids {
+    /*
+    import java.util.Date;
+
+public class Bid {
+    private int bidAmount; // The amount of the bid
+    private Buyer bidder; // The buyer who placed the bid
+    private Product product; // The product on which the bid is placed
+    private Date bidTime; // The date and time when the bid was placed
+    private boolean isWinningBid; // Indicates if this bid is the winning bid
+
+    // Constructors...
+
+    // Getter and setter methods...
+
+    public boolean isValidBid() {
+        // Check if the bid amount is valid based on the buyer's balance
+        int bidderBalance = bidder.getBitscoinBalance();
+        return bidAmount > 0 && bidAmount <= bidderBalance;
+    }
+
+    public boolean placeBid() {
+        // Check if the bid is valid based on the buyer's balance
+        if (!isValidBid()) {
+            return false;
+        }
+
+        // Proceed with placing the bid
+        product.addBid(this); // Add this bid to the product's bid list
+        bidder.addBid(this); // Add this bid to the buyer's bid history
+        return true;
+    }
+
+    public void markAsWinningBid() {
+        // Mark this bid as the winning bid for the associated product
+        isWinningBid = true;
+    }
+
+    // Other methods...
+}
+
+     */
+}
