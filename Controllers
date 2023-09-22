@@ -1,0 +1,41 @@
+public class Controllers {
+    /*
+    OAuth Authentication:
+
+Users click on a "Sign in with Google" button on your registration page.
+They are redirected to Google's login page, where they provide their Google Institute IDs and authenticate themselves.
+OAuth Callback Handling:
+
+After successful authentication, Google redirects users back to your application's /oauth/callback URL.
+The /oauth/callback method in your controller handles this callback.
+It retrieves user information from the OAuth token, including the Google Institute ID.
+User Registration or Login:
+
+The /oauth/callback method checks if the user's Google Institute ID already exists in your database.
+If the ID exists, the user is logged in, and their session is set up.
+If not, a new user account is created in your database using the Institute ID and other necessary information.
+Profile Management:
+
+Users can view and update their profiles via the /profile route.
+Profile updates may include changing the nickname and other user details.
+Product Listing and Bidding:
+
+Users can browse product listings via the /listings route.
+They can view details of specific products using /listings/:id.
+Buyers can place bids on products through the /listings/:id/bid route.
+Product Listing Creation:
+
+Sellers can create new product listings via the /listings/new route.
+A form is provided to input product details, including name, description, price, and expiry time.
+Messaging:
+
+Users can engage in messaging via the /messages route.
+They can view and send messages within specific conversations via /messages/:id.
+User Logout:
+
+Users can log out and clear their sessions using the /logout route.
+Error Handling:
+
+The controller includes methods to handle various error scenarios and display appropriate error messages or pages.
+     */
+}
