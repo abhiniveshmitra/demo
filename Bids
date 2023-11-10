@@ -1,17 +1,15 @@
-public class Bids {
-    /*
-    import java.util.Date;
+import java.sql.*;
+import java.util.Date;
 
 public class Bid {
+    private int bidID; // Unique identifier for each bid
     private int bidAmount; // The amount of the bid
     private Buyer bidder; // The buyer who placed the bid
     private Product product; // The product on which the bid is placed
     private Date bidTime; // The date and time when the bid was placed
     private boolean isWinningBid; // Indicates if this bid is the winning bid
 
-    // Constructors...
-
-    // Getter and setter methods...
+    // Constructors, getters, and setters...
 
     public boolean isValidBid() {
         // Check if the bid amount is valid based on the buyer's balance
@@ -25,19 +23,53 @@ public class Bid {
             return false;
         }
 
-        // Proceed with placing the bid
-        product.addBid(this); // Add this bid to the product's bid list
-        bidder.addBid(this); // Add this bid to the buyer's bid history
-        return true;
+        // Assuming SQL database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitsbids", "username", "password")) {
+            // Insert bid into the database
+            String insertQuery = "INSERT INTO bids (bidAmount, bidderID, productID, bidTime) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1, bidAmount);
+                preparedStatement.setInt(2, bidder.getBuyerID());
+                preparedStatement.setInt(3, product.getProductID());
+                preparedStatement.setTimestamp(4, new Timestamp(new Date().getTime()));
+                preparedStatement.executeUpdate();
+
+                // Get the generated bidID
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    bidID = generatedKeys.getInt(1);
+                }
+            }
+
+            // Update product with the new bid
+            product.addBid(this);
+
+            // Update buyer's bid history
+            bidder.addBid(this);
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void markAsWinningBid() {
         // Mark this bid as the winning bid for the associated product
         isWinningBid = true;
+
+        // Assuming SQL database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitsbids", "username", "password")) {
+            // Update product to mark this bid as winning
+            String updateQuery = "UPDATE bids SET isWinningBid = true WHERE bidID = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                preparedStatement.setInt(1, bidID);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Other methods...
-}
-
-     */
 }
