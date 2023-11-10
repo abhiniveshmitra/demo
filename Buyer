@@ -1,38 +1,39 @@
 import java.util.List;
 
 public class Buyer {
-    private int buyerId;
-    private String username;
+    private int buyerID;
+    private String nickname;
     private int bitscoinBalance;
     private List<Bid> bids;
     private List<Message> messages;
 
-    public Buyer(int buyerId, String username, int bitscoinBalance, List<Bid> bids, List<Message> messages) {
-        this.buyerId = buyerId;
-        this.username = username;
+    public Buyer(int buyerID, String nickname, int bitscoinBalance, List<Bid> bids, List<Message> messages) {
+        this.buyerID = buyerID;
+        this.nickname = nickname;
         this.bitscoinBalance = bitscoinBalance;
         this.bids = bids;
         this.messages = messages;
     }
 
-    // Getters and setters...
-
-    public int getBuyerId() {
-        return buyerId;
+    // Getter and setter methods for buyerID...
+    public int getBuyerID() {
+        return buyerID;
     }
 
-    public void setBuyerId(int buyerId) {
-        this.buyerId = buyerId;
+    public void setBuyerID(int buyerID) {
+        this.buyerID = buyerID;
     }
 
-    public String getUsername() {
-        return username;
+    // Getter and setter methods for nickname...
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
+    // Getter and setter methods for bitscoinBalance...
     public int getBitscoinBalance() {
         return bitscoinBalance;
     }
@@ -41,6 +42,7 @@ public class Buyer {
         this.bitscoinBalance = bitscoinBalance;
     }
 
+    // Getter and setter methods for bids...
     public List<Bid> getBids() {
         return bids;
     }
@@ -49,6 +51,7 @@ public class Buyer {
         this.bids = bids;
     }
 
+    // Getter and setter methods for messages...
     public List<Message> getMessages() {
         return messages;
     }
@@ -57,5 +60,5 @@ public class Buyer {
         this.messages = messages;
     }
 
-    // Other methods...
+    // Other buyer-specific methods...
 }
