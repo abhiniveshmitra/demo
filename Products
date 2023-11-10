@@ -1,8 +1,8 @@
-public class Products {
-    /*
-    import java.util.Date;
+import java.util.Date;
+import java.util.List;
 
 public class Product {
+    private int productID; // Primary Key: A unique identifier for each product
     private String name; // The name or title of the product
     private String description; // A description of the product
     private double askingPrice; // The initial asking price set by the seller
@@ -13,9 +13,27 @@ public class Product {
     private Date bidEndDate; // The date and time when the bid ends
     private String videoUrl; // URL or file path of the uploaded video
 
-    // Constructors and other methods...
+    // Constructors...
 
-    // Getter and setter methods for the description...
+    // Getter and setter methods for productID...
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    // Getter and setter methods for name...
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter and setter methods for description...
     public String getDescription() {
         return description;
     }
@@ -24,8 +42,68 @@ public class Product {
         this.description = description;
     }
 
-    // Other methods...
-}
+    // Getter and setter methods for askingPrice...
+    public double getAskingPrice() {
+        return askingPrice;
+    }
 
-     */
+    public void setAskingPrice(double askingPrice) {
+        this.askingPrice = askingPrice;
+    }
+
+    // Getter and setter methods for seller...
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    // Getter and setter methods for bids...
+    public List<Bid> getBids() {
+        return bids;
+    }
+
+    public void setBids(List<Bid> bids) {
+        this.bids = bids;
+    }
+
+    // Getter and setter methods for isSold...
+    public boolean isSold() {
+        return isSold;
+    }
+
+    public void setSold(boolean sold) {
+        isSold = sold;
+    }
+
+    // Getter and setter methods for listingStartDate...
+    public Date getListingStartDate() {
+        return listingStartDate;
+    }
+
+    public void setListingStartDate(Date listingStartDate) {
+        this.listingStartDate = listingStartDate;
+    }
+
+    // Getter and setter methods for bidEndDate...
+    public Date getBidEndDate() {
+        return bidEndDate;
+    }
+
+    public void setBidEndDate(Date bidEndDate) {
+        this.bidEndDate = bidEndDate;
+    }
+
+    // Getter and setter methods for videoUrl...
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    // Other methods...
 }
