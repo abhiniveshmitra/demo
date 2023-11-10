@@ -1,75 +1,75 @@
-import java.sql.*;
 import java.util.Date;
 
 public class Bid {
-    private int bidID; // Unique identifier for each bid
-    private int bidAmount; // The amount of the bid
-    private Buyer bidder; // The buyer who placed the bid
-    private Product product; // The product on which the bid is placed
-    private Date bidTime; // The date and time when the bid was placed
-    private boolean isWinningBid; // Indicates if this bid is the winning bid
+    private int bidID;
+    private int bidAmount;
+    private Buyer bidder;
+    private Product product;
+    private Date bidTime;
+    private boolean isWinningBid;
 
-    // Constructors, getters, and setters...
-
-    public boolean isValidBid() {
-        // Check if the bid amount is valid based on the buyer's balance
-        int bidderBalance = bidder.getBitscoinBalance();
-        return bidAmount > 0 && bidAmount <= bidderBalance;
+    public Bid(int bidID, int bidAmount, Buyer bidder, Product product, Date bidTime, boolean isWinningBid) {
+        this.bidID = bidID;
+        this.bidAmount = bidAmount;
+        this.bidder = bidder;
+        this.product = product;
+        this.bidTime = bidTime;
+        this.isWinningBid = isWinningBid;
     }
 
-    public boolean placeBid() {
-        // Check if the bid is valid based on the buyer's balance
-        if (!isValidBid()) {
-            return false;
-        }
-
-        // Assuming SQL database
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitsbids", "username", "password")) {
-            // Insert bid into the database
-            String insertQuery = "INSERT INTO bids (bidAmount, bidderID, productID, bidTime) VALUES (?, ?, ?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
-                preparedStatement.setInt(1, bidAmount);
-                preparedStatement.setInt(2, bidder.getBuyerID());
-                preparedStatement.setInt(3, product.getProductID());
-                preparedStatement.setTimestamp(4, new Timestamp(new Date().getTime()));
-                preparedStatement.executeUpdate();
-
-                // Get the generated bidID
-                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    bidID = generatedKeys.getInt(1);
-                }
-            }
-
-            // Update product with the new bid
-            product.addBid(this);
-
-            // Update buyer's bid history
-            bidder.addBid(this);
-
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+    // Getter and setter methods for bidID...
+    public int getBidID() {
+        return bidID;
     }
 
-    public void markAsWinningBid() {
-        // Mark this bid as the winning bid for the associated product
-        isWinningBid = true;
-
-        // Assuming SQL database
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitsbids", "username", "password")) {
-            // Update product to mark this bid as winning
-            String updateQuery = "UPDATE bids SET isWinningBid = true WHERE bidID = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
-                preparedStatement.setInt(1, bidID);
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void setBidID(int bidID) {
+        this.bidID = bidID;
     }
 
-    // Other methods...
+    // Getter and setter methods for bidAmount...
+    public int getBidAmount() {
+        return bidAmount;
+    }
+
+    public void setBidAmount(int bidAmount) {
+        this.bidAmount = bidAmount;
+    }
+
+    // Getter and setter methods for bidder...
+    public Buyer getBidder() {
+        return bidder;
+    }
+
+    public void setBidder(Buyer bidder) {
+        this.bidder = bidder;
+    }
+
+    // Getter and setter methods for product...
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    // Getter and setter methods for bidTime...
+    public Date getBidTime() {
+        return bidTime;
+    }
+
+    public void setBidTime(Date bidTime) {
+        this.bidTime = bidTime;
+    }
+
+    // Getter and setter methods for isWinningBid...
+    public boolean isWinningBid() {
+        return isWinningBid;
+    }
+
+    public void setWinningBid(boolean winningBid) {
+        isWinningBid = winningBid;
+    }
+
+    // Other bid-specific methods...
 }
