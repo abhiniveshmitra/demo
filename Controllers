@@ -1,87 +1,66 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class BuyerController {
+public class Controllers {
+    // JDBC database URL, username, and password of MySQL server
+    private static final String JDBC_URL = "jdbc:mysql://your_database_url";
+    private static final String JDBC_USER = "your_database_user";
+    private static final String JDBC_PASSWORD = "your_database_password";
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/bits_bids"; // Replace with your database URL
-    private static final String JDBC_USER = "your_username"; // Replace with your database username
-    private static final String JDBC_PASSWORD = "your_password"; // Replace with your database password
+    // JDBC variables for opening, closing, and managing connection
+    private static Connection connection;
 
-    // JDBC Connection
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+    static {
+        try {
+            // Initialize the JDBC connection
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    // Retrieve a Buyer by username
-    public Buyer getBuyerByUsername(String username) {
-        String sql = "SELECT * FROM buyers WHERE username = ?";
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, username);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return mapResultSetToBuyer(resultSet);
-                }
+    // Method to place a bid
+    public static boolean placeBid(Buyer buyer, Product product, int bidAmount) {
+        try {
+            // Check if the bid is valid based on buyer's balance
+            if (!isValidBid(buyer, bidAmount)) {
+                return false;
             }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-        return null;
-    }
 
-    // Retrieve all Buyers
-    public List<Buyer> getAllBuyers() {
-        List<Buyer> buyers = new ArrayList<>();
-        String sql = "SELECT * FROM buyers";
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql);
-             ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                buyers.add(mapResultSetToBuyer(resultSet));
+            // Proceed with placing the bid
+            // Assuming you have a "bids" table in your database
+            String insertBidQuery = "INSERT INTO bids (buyer_id, product_id, bid_amount) VALUES (?, ?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBidQuery)) {
+                preparedStatement.setInt(1, buyer.getBuyerID());
+                preparedStatement.setInt(2, product.getProductID());
+                preparedStatement.setInt(3, bidAmount);
+                preparedStatement.executeUpdate();
             }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-        return buyers;
-    }
 
-    // Insert a new Buyer
-    public void insertBuyer(Buyer buyer) {
-        String sql = "INSERT INTO buyers (username, bitscoin_balance) VALUES (?, ?)";
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, buyer.getUsername());
-            statement.setInt(2, buyer.getBitscoinBalance());
-            statement.executeUpdate();
+            // Assuming you need to update the buyer's balance after placing a bid
+            String updateBalanceQuery = "UPDATE buyers SET balance = balance - ? WHERE buyer_id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateBalanceQuery)) {
+                preparedStatement.setInt(1, bidAmount);
+                preparedStatement.setInt(2, buyer.getBuyerID());
+                preparedStatement.executeUpdate();
+            }
+
+            return true;
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace();
+            return false;
         }
     }
 
-    // Update bitscoin balance for a Buyer
-    public void updateBitscoinBalance(Buyer buyer, int newBalance) {
-        String sql = "UPDATE buyers SET bitscoin_balance = ? WHERE buyer_id = ?";
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, newBalance);
-            statement.setInt(2, buyer.getBuyerId());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
+    // Method to check if a bid is valid
+    private static boolean isValidBid(Buyer buyer, int bidAmount) {
+        // Check if the bid amount is valid based on the buyer's balance
+        int bidderBalance = buyer.getBitscoinBalance();
+        return bidAmount > 0 && bidAmount <= bidderBalance;
     }
 
-    // Helper method to map ResultSet to Buyer object
-    private Buyer mapResultSetToBuyer(ResultSet resultSet) throws SQLException {
-        int buyerId = resultSet.getInt("buyer_id");
-        String buyerUsername = resultSet.getString("username");
-        int bitscoinBalance = resultSet.getInt("bitscoin_balance");
-
-        return new Buyer(buyerId, buyerUsername, bitscoinBalance, null, null);
-    }
+    // Other controller methods...
 }
