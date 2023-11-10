@@ -1,15 +1,83 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Seller {
-    /*
+    private int sellerID; // Primary Key: A unique identifier for each seller
     private String username;
     private String email;
     private String password;
     private int bitscoinBalance;
-    private List<Product> productsForSale; // List of products the seller is selling
-    private List<Message> messages; // Private messages for the seller
-    // Other seller-specific properties and methods...
+    private List<Product> productsForSale = new ArrayList<>(); // List of products the seller is selling
+    private List<Message> messages = new ArrayList<>(); // Private messages for the seller
 
-    // Getters and setters...
-     public void listProduct(Product product) {
+    // Constructors...
+
+    // Getter and setter methods for sellerID...
+    public int getSellerID() {
+        return sellerID;
+    }
+
+    public void setSellerID(int sellerID) {
+        this.sellerID = sellerID;
+    }
+
+    // Getter and setter methods for username...
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    // Getter and setter methods for email...
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // Getter and setter methods for password...
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    // Getter and setter methods for bitscoinBalance...
+    public int getBitscoinBalance() {
+        return bitscoinBalance;
+    }
+
+    public void setBitscoinBalance(int bitscoinBalance) {
+        this.bitscoinBalance = bitscoinBalance;
+    }
+
+    // Getter and setter methods for productsForSale...
+    public List<Product> getProductsForSale() {
+        return productsForSale;
+    }
+
+    public void setProductsForSale(List<Product> productsForSale) {
+        this.productsForSale = productsForSale;
+    }
+
+    // Getter and setter methods for messages...
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    // Other methods...
+
+    public void listProduct(Product product) {
         // Implementation for listing a product for sale
         productsForSale.add(product);
     }
@@ -37,18 +105,18 @@ public class Seller {
     public void updateProduct(Product product) {
         // Implementation for updating product details
         // Maintain a list of conversations with buyers
-    private List<Message> buyerConversations = new ArrayList<>();
+        List<Message> buyerConversations = new ArrayList<>();
 
-    // Constructors, getters, and setters...
+        // Constructors, getters, and setters...
 
-    public void addMessageToBuyerConversation(Message message) {
-        // Add a message to the conversation with a specific buyer
-        buyerConversations.add(message);
+        public void addMessageToBuyerConversation(Message message) {
+            // Add a message to the conversation with a specific buyer
+            buyerConversations.add(message);
+        }
+
+        public List<Message> getBuyerConversations() {
+            // Get the list of conversations with buyers
+            return buyerConversations;
+        }
     }
-
-    public List<Message> getBuyerConversations() {
-        // Get the list of conversations with buyers
-        return buyerConversations;
-    }
-     */
 }
