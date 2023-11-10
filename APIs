@@ -1,48 +1,81 @@
-API
+public class Api {
 
-**Seller API Endpoints**:
+    // Buyer API
+    public Buyer getBuyerById(int buyerId) {
+        // Implementation to retrieve a buyer by ID from the database
+        // Use JDBC or your preferred data access method
+        return null;
+    }
 
-- `GET /api/sellers/{sellerId}`: Retrieve seller details by seller ID.
-- `GET /api/sellers/{sellerId}/products`: Retrieve a list of products listed by a specific seller.
-- `POST /api/sellers/{sellerId}/products`: List a new product for sale by a seller.
-- `GET /api/sellers/{sellerId}/messages`: Retrieve private messages for the seller.
-- `POST /api/sellers/{sellerId}/messages`: Send a private message as a seller.
-- `PUT /api/sellers/{sellerId}`: Update seller profile information.
-- `POST /api/sellers/{sellerId}/withdraw`: Withdraw balance from the seller's account.
-- `POST /api/sellers/{sellerId}/mark-product-sold`: Mark a product as sold by the seller.
-- `GET /api/sellers/{sellerId}/buyer-conversations`: Retrieve a list of conversations with buyers for the seller.
+    public List<Product> getBuyerProducts(int buyerId) {
+        // Implementation to retrieve products associated with a buyer from the database
+        return null;
+    }
 
-**Buyer API Endpoints**:
+    public List<Message> getBuyerMessages(int buyerId) {
+        // Implementation to retrieve messages for a buyer from the database
+        return null;
+    }
 
-- `GET /api/buyers/{buyerId}`: Retrieve buyer details by buyer ID.
-- `GET /api/buyers/{buyerId}/bids`: Retrieve a list of bids made by a specific buyer.
-- `POST /api/buyers/{buyerId}/place-bid`: Place a bid on a product as a buyer.
-- `GET /api/buyers/{buyerId}/messages`: Retrieve private messages for the buyer.
-- `POST /api/buyers/{buyerId}/messages`: Send a private message as a buyer.
-- `PUT /api/buyers/{buyerId}`: Update buyer profile information.
-- `POST /api/buyers/{buyerId}/increase-balance`: Increase the balance in the buyer's account.
-- `GET /api/buyers/{buyerId}/seller-conversations`: Retrieve a list of conversations with sellers for the buyer.
+    public boolean placeBid(int buyerId, int productId, double bidAmount) {
+        // Implementation to place a bid for a product by a buyer
+        // Validate bid amount and buyer balance
+        // Update the database with the bid information
+        return false;
+    }
 
-**Product API Endpoints**:
+    // Seller API
+    public Seller getSellerById(int sellerId) {
+        // Implementation to retrieve a seller by ID from the database
+        return null;
+    }
 
-- `GET /api/products/{productId}`: Retrieve product details by product ID.
-- `GET /api/products`: Retrieve a list of active product listings.
-- `POST /api/products`: List a new product for sale.
-- `PUT /api/products/{productId}`: Update product listing information.
-- `DELETE /api/products/{productId}`: Remove a product listing.
-- `GET /api/products/{productId}/bids`: Retrieve a list of bids made on a specific product.
-- `POST /api/products/{productId}/mark-sold`: Mark a product as sold.
+    public List<Product> getSellerProducts(int sellerId) {
+        // Implementation to retrieve products listed by a seller from the database
+        return null;
+    }
 
-**Bid API Endpoints**:
+    public List<Message> getSellerMessages(int sellerId) {
+        // Implementation to retrieve messages for a seller from the database
+        return null;
+    }
 
-- `GET /api/bids/{bidId}`: Retrieve bid details by bid ID.
-- `GET /api/bids`: Retrieve a list of all bids.
-- `POST /api/bids/{bidId}/mark-as-winning`: Mark a bid as the winning bid.
+    public boolean listProduct(int sellerId, Product product) {
+        // Implementation to list a product for sale by a seller
+        // Update the database with the product information
+        return false;
+    }
 
-**Message API Endpoints**:
+    // Product API
+    public Product getProductById(int productId) {
+        // Implementation to retrieve a product by ID from the database
+        return null;
+    }
 
-- `GET /api/messages`: Retrieve a list of user conversations (both buyer and seller conversations).
-- `GET /api/messages/{conversationId}`: Retrieve messages in a specific conversation.
-- `POST /api/messages/{conversationId}`: Send a message in a specific conversation.
-- `GET /api/unread-messages/{userId}`: Retrieve unread messages for a user.
+    public List<Bid> getProductBids(int productId) {
+        // Implementation to retrieve bids for a product from the database
+        return null;
+    }
 
+    // Bid API
+    public Bid getBidById(int bidId) {
+        // Implementation to retrieve a bid by ID from the database
+        return null;
+    }
+
+    // Message API
+    public Message getMessageById(int messageId) {
+        // Implementation to retrieve a message by ID from the database
+        return null;
+    }
+
+    public List<Message> getConversation(int user1Id, int user2Id) {
+        // Implementation to retrieve a conversation between two users from the database
+        return null;
+    }
+
+    public boolean sendMessage(Message message) {
+        // Implementation to send a message and update the database
+        return false;
+    }
+}
