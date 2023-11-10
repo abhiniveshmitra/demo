@@ -1,45 +1,61 @@
-public class Buyer {private String username;
-   /*
-   private String email;
-    private String password;
-    private int bitscoinBalance;
-    private List<Bid> bids; // List of bids made by the buyer
-    private List<Message> messages; // Private messages for the buyer
-    // Other buyer-specific properties and methods...
+import java.util.List;
 
-    // Getters and setters..
-    public void placeBid(Product product, int bidAmount) {
-        // Implementation for placing a bid
+public class Buyer {
+    private int buyerId;
+    private String username;
+    private int bitscoinBalance;
+    private List<Bid> bids;
+    private List<Message> messages;
+
+    public Buyer(int buyerId, String username, int bitscoinBalance, List<Bid> bids, List<Message> messages) {
+        this.buyerId = buyerId;
+        this.username = username;
+        this.bitscoinBalance = bitscoinBalance;
+        this.bids = bids;
+        this.messages = messages;
     }
 
-    public List<Bid> viewBiddingHistory() {
-        // Implementation for viewing bidding history
+    // Getters and setters...
+
+    public int getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(int buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getBitscoinBalance() {
+        return bitscoinBalance;
+    }
+
+    public void setBitscoinBalance(int bitscoinBalance) {
+        this.bitscoinBalance = bitscoinBalance;
+    }
+
+    public List<Bid> getBids() {
         return bids;
     }
 
-    public List<Message> viewMessages() {
-        // Implementation for viewing messages
+    public void setBids(List<Bid> bids) {
+        this.bids = bids;
+    }
+
+    public List<Message> getMessages() {
         return messages;
     }
 
-    public void increaseBalance(int amount) {
-        // Implementation for increasing the balance
-        bitscoinBalance += amount;
-    }
-}
-// Maintain a list of conversations with sellers
-    private List<Message> sellerConversations = new ArrayList<>();
-
-    // Constructors, getters, and setters...
-
-    public void addMessageToSellerConversation(Message message) {
-        // Add a message to the conversation with a specific seller
-        sellerConversations.add(message);
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
-    public List<Message> getSellerConversations() {
-        // Get the list of conversations with sellers
-        return sellerConversations;
-    }
-    */
+    // Other methods...
 }
